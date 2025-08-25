@@ -62,7 +62,7 @@ document.querySelectorAll('.segments').forEach(group => {
     const tip = document.getElementById('donut-tip');
     const donutWrap = document.getElementById('donut-byaccount');
 
-    const cx = 120, cy = 120, rOuter = 85, thickness = 14, rInner = rOuter - thickness;
+    const cx = 120, cy = 120, rOuter = 85, thickness = 10, rInner = rOuter - thickness;
     const padAngle = 0.03; // ~1.7° de espaço entre segmentos
     let start = 0;
 

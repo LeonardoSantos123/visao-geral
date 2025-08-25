@@ -23,16 +23,18 @@ body{
 }
 
 /* ====== GRID ====== */
-.dashboard{
-  display:grid;
-  gap:24px;
+.dashboard {
+  display: grid;
+  gap: 24px;
   grid-template-columns: 1fr;
+  max-width: 960px; /* limita a largura */
+  margin: 0 auto;   /* centraliza horizontalmente */
 }
 @media (min-width: 980px){
-  .dashboard{
+  .dashboard {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    grid-auto-rows: minmax(260px, auto);
+    grid-auto-rows: minmax(200px, auto); /* diminui altura mínima dos cards */
   }
   .card--cashflow{
     grid-column: 1 / span 2; /* ocupa a linha de baixo toda */
@@ -46,24 +48,23 @@ body{
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: 0 8px 24px rgba(0,0,0,.45);
-  padding: 18px;
+  padding: 12px;
   display:flex;
   flex-direction:column;
-  gap:16px;
+  gap:10px;
 }
 .card__top{
-  display:flex;
-  align-items:flex-start;
-  justify-content:flex-start;
-  gap:12px;
+  display: flex;
+  flex-direction: column; /* títulos em cima, tabs embaixo */
+  gap: 8px;               /* espaçamento entre título e tabs */
 }
 .title{
   display:flex;
-  gap:12px;
+  gap:8px;
   align-items:center;
 }
 .iconbox{
-  width:36px; height:36px;
+  width:50px; height:50px;
   border-radius:10px;
   display:grid; place-items:center;
   background:#0f1320;
@@ -71,10 +72,13 @@ body{
   color:#fff;
 }
 .title h3{
-  margin:0;
-  font-weight:700;
-  font-size:16px;
+  margin: 0 0 8px 0;
+  font-weight:500;
+  font-size:18px;
   letter-spacing:.2px;
+}
+.title-text {
+    margin-left: 10px;
 }
 .title small{
   display:block;
@@ -91,33 +95,38 @@ body{
 }
 
 /* ====== SEGMENTED TABS ====== */
-.segments{
+.segments {
+  display: flex;               /* flex horizontal */
+  gap: 6px;                    /* espaço entre os botões */
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
   background: #0f1320;
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:4px;
-  display:inline-flex;
-  gap:6px;
-  flex-shrink: 0;
-  margin: 0 auto;
-  margin-top: 8px; 
+  margin: 0;                   /* remove centralização */
+  width: 100%;                 /* ocupa toda a largura do card */
+  margin-top: 8px;
 }
-.segment{
-  appearance:none;
-  border:0;
-  background:transparent;
-  color:var(--text);
-  font-size:13px;
-  padding:8px 12px;
-  border-radius:8px;
-  cursor:pointer;
-  transition: all .2s ease;
-  white-space:nowrap;
+
+/* Cada botão da aba */
+.segment {
+  flex: 1 1 0;                 /* todos ocupam igual espaço */
+  text-align: center;           /* texto centralizado dentro do botão */
+  font-size: 18px;              /* aumenta fonte de 13px para 20px */
+  padding: 10px 0;              /* altura maior, largura ajusta pelo flex */
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  background: transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
-.segment.is-active{
+
+/* Aba ativa */
+.segment.is-active {
   background: var(--active);
-  color:#fff;
-  box-shadow: 0 2px 0 rgba(0,0,0,.25) inset;
+  color: #fff;
+  box-shadow: inset 0 2px 0 rgba(0,0,0,.25);
 }
 
 /* ====== PLACEHOLDERS (onde os gráficos irão) ====== */
@@ -200,16 +209,22 @@ body{
 
 
 /* === Net Worth: conteúdo por aba === */
-.networth-sections{ margin-top: 6px; }
+.networth-sections{ margin-top: 2px; }
 .networth-section{ display: none; }
 .networth-section.is-visible{ display: block; }
 
 /* === Donut (By Account) === */
+.donut-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* o donut fica logo abaixo das tabs */
+  margin-top: 0;  /* remove qualquer margem extra */
+}
 .donut{
   position: relative;
   width: min(360px, 100%);
   aspect-ratio: 1/1;
-  margin: 8px auto 10px;
+  margin: 0 auto;
 }
 .donut svg{ width:100%; height:100%; }
 .donut .track{

@@ -19,39 +19,40 @@
   <section class="card">
     <div class="card__top">
   <div class="title">
-    <div class="iconbox"><i class="fa-solid fa-wallet"></i></div>
-    <div>
-      <h3>Net Worth</h3>
+    <div class="iconbox"><i class="fa-solid fa-wallet fa-lg"></i></div>
+    <div class="title-text">
+      <h3>Receitas</h3>
       <span class="value-xxl">$162,098.13</span>
     </div>
   </div>
-</div>
 
-    <!-- Tabs (ficam abaixo do título e centralizadas) -->
-<div class="segments" role="tablist" aria-label="Net Worth Tabs" data-scope="networth">
-  <button class="segment is-active" role="tab" data-target="#networth-byAccount">By Account</button>
-  <button class="segment" role="tab" data-target="#networth-byTag">By Tag</button>
-  <button class="segment" role="tab" data-target="#networth-debt">Debt</button>
+  <!-- SEGMENTS sempre abaixo do título -->
+  <div class="segments" role="tablist" aria-label="Net Worth Tabs" data-scope="networth">
+    <button class="segment is-active" role="tab" data-target="#networth-byAccount">By Account</button>
+    <button class="segment" role="tab" data-target="#networth-byTag">By Tag</button>
+    <button class="segment" role="tab" data-target="#networth-debt">Debt</button>
+  </div>
 </div>
 
 <!-- Conteúdos por aba -->
 <div class="networth-sections">
   <!-- BY ACCOUNT: DONUT -->
   <div class="networth-section is-visible" id="networth-byAccount">
-    <div class="donut" id="donut-byaccount">
-      <svg viewBox="0 0 240 240" aria-label="Net Worth by Account">
-        <circle class="track" cx="120" cy="120" r="85"></circle>
-        <g id="donut-arcs"></g>
-      </svg>
-      <div class="center-label">
-        <div>
-          <div class="value" id="donut-total">R$ 855</div>
-          <div class="sub">Total de Valor</div>
-        </div>
+    <div class="donut-wrap">
+  <div class="donut" id="donut-byaccount">
+    <svg viewBox="0 0 240 240" aria-label="Net Worth by Account">
+      <circle class="track" cx="120" cy="120" r="85"></circle>
+      <g id="donut-arcs"></g>
+    </svg>
+    <div class="center-label">
+      <div>
+        <div class="value" id="donut-total">R$ 855</div>
+        <div class="sub">Total de Valor</div>
       </div>
-      <div class="tooltip" id="donut-tip"></div>
     </div>
+    <div class="tooltip" id="donut-tip"></div>
   </div>
+</div>
 
   <!-- As outras abas podem ficar com placeholder por enquanto -->
   <div class="networth-section" id="networth-byTag">
