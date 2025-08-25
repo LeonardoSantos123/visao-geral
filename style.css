@@ -16,7 +16,6 @@ html,body{ height:100% }
 body{
   margin:0;
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   padding: 28px;
@@ -113,7 +112,7 @@ body{
 .segment {
   flex: 1 1 0;                 /* todos ocupam igual espaço */
   text-align: center;           /* texto centralizado dentro do botão */
-  font-size: 16px;              /* aumenta fonte de 13px para 20px */
+  font-size: 14px;              /* aumenta fonte de 13px para 20px */
   padding: 6px 0;              /* altura maior, largura ajusta pelo flex */
   border-radius: 8px;
   border: none;
