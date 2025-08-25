@@ -30,7 +30,7 @@ body{
   max-width: 960px; /* limita a largura */
   margin: 0 auto;   /* centraliza horizontalmente */
 }
-@media (min-width: 980px) {
+@media (min-width: 900px) {
   .dashboard {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
