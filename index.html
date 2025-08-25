@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dashboard – Estrutura</title>
+
+<!-- Font & Icons -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="dashboard">
+
+  <!-- ====== CARD 1: NET WORTH ====== -->
+  <section class="card">
+    <div class="card__top">
+  <div class="title">
+    <div class="iconbox"><i class="fa-solid fa-wallet"></i></div>
+    <div>
+      <h3>Net Worth</h3>
+      <span class="value-xxl">$162,098.13</span>
+    </div>
+  </div>
+</div>
+
+    <!-- Tabs (ficam abaixo do título e centralizadas) -->
+<div class="segments" role="tablist" aria-label="Net Worth Tabs" data-scope="networth">
+  <button class="segment is-active" role="tab" data-target="#networth-byAccount">By Account</button>
+  <button class="segment" role="tab" data-target="#networth-byTag">By Tag</button>
+  <button class="segment" role="tab" data-target="#networth-debt">Debt</button>
+</div>
+
+<!-- Conteúdos por aba -->
+<div class="networth-sections">
+  <!-- BY ACCOUNT: DONUT -->
+  <div class="networth-section is-visible" id="networth-byAccount">
+    <div class="donut" id="donut-byaccount">
+      <svg viewBox="0 0 240 240" aria-label="Net Worth by Account">
+        <circle class="track" cx="120" cy="120" r="85"></circle>
+        <g id="donut-arcs"></g>
+      </svg>
+      <div class="center-label">
+        <div>
+          <div class="value" id="donut-total">R$ 855</div>
+          <div class="sub">Total de Valor</div>
+        </div>
+      </div>
+      <div class="tooltip" id="donut-tip"></div>
+    </div>
+  </div>
+
+  <!-- As outras abas podem ficar com placeholder por enquanto -->
+  <div class="networth-section" id="networth-byTag">
+    <div class="mount">Conteúdo “By Tag” aqui</div>
+  </div>
+  <div class="networth-section" id="networth-debt">
+    <div class="mount">Conteúdo “Debt” aqui</div>
+  </div>
+</div>
+
+    <!-- legenda (estrutural, estática) -->
+    <ul class="legend">
+      <li><span class="dot c1"></span> House (57.09%)</li>
+      <li><span class="dot c2"></span> Car (15.65%)</li>
+      <li><span class="dot c3"></span> Vanguard (10.15%)</li>
+      <li><span class="dot c4"></span> Coinbase (10.81%)</li>
+      <li><span class="dot c5"></span> Chase Checking (1.36%)</li>
+      <li><span class="dot c6"></span> From Jack (2.32%)</li>
+      <li><span class="dot c7"></span> Ally Savings (2.62%)</li>
+    </ul>
+  </section>
+
+  <!-- ====== CARD 2: BUDGET ====== -->
+  <section class="card">
+    <div class="card__top">
+      <div class="title">
+        <div class="iconbox"><i class="fa-solid fa-bell"></i></div>
+        <div>
+          <h3>Budget</h3>
+          <small>State of your goals and budget</small>
+        </div>
+      </div>
+      <div class="segments" role="tablist" aria-label="Budget Tabs">
+        <button class="segment is-active" role="tab">Goals</button>
+        <button class="segment" role="tab">Income</button>
+        <button class="segment" role="tab">Expense</button>
+      </div>
+    </div>
+
+    <!-- estrutura para metas (barras são apenas decorativas; substitua depois se quiser) -->
+    <div class="goal">
+      <div class="name">New Car</div>
+      <div class="amount">$5,000.01 / <strong>$50,000.00</strong></div>
+      <div class="progress" aria-hidden="true"><i style="width:10%"></i></div>
+    </div>
+    <div class="goal">
+      <div class="name">Vacation</div>
+      <div class="amount">€1,002.15 / <strong>€3,000.00</strong></div>
+      <div class="progress" aria-hidden="true"><i style="width:33%"></i></div>
+    </div>
+  </section>
+
+  <!-- ====== CARD 3: CASH FLOW ====== -->
+  <section class="card card--cashflow">
+    <div class="card__top">
+      <div class="title">
+        <div class="iconbox"><i class="fa-solid fa-right-left"></i></div>
+        <div>
+          <h3>Cash Flow</h3>
+          <small>Your income and expenses over time</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- área grande para o gráfico -->
+    <div class="grid-placeholder" id="mount-cashflow" aria-label="cashflow mount"></div>
+
+    <div class="spacer-8"></div>
+    <div class="axis">
+      <span>Nov 2023</span><span>Jan 2024</span><span>Mar 2024</span>
+      <span>May 2024</span><span>Jul 2024</span><span>Sep 2024</span>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
