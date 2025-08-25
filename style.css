@@ -30,15 +30,17 @@ body{
   max-width: 960px; /* limita a largura */
   margin: 0 auto;   /* centraliza horizontalmente */
 }
-@media (min-width: 980px){
+@media (min-width: 980px) {
   .dashboard {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    grid-auto-rows: minmax(200px, auto); /* diminui altura mínima dos cards */
+    grid-auto-rows: minmax(180px, auto); /* altura mínima menor */
+    gap: 16px; /* reduz o espaço entre os cards */
   }
-  .card--cashflow{
-    grid-column: 1 / span 2; /* ocupa a linha de baixo toda */
-    min-height: 380px;
+
+  .card--cashflow {
+    grid-column: 1 / span 2; /* ocupa toda a linha de baixo */
+    min-height: 300px;       /* altura menor */
   }
 }
 
@@ -48,15 +50,15 @@ body{
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: 0 8px 24px rgba(0,0,0,.45);
-  padding: 12px;
+  padding: 10px;
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:6px;
 }
 .card__top{
   display: flex;
   flex-direction: column; /* títulos em cima, tabs embaixo */
-  gap: 8px;               /* espaçamento entre título e tabs */
+  gap: 6px;               /* espaçamento entre título e tabs */
 }
 .title{
   display:flex;
@@ -74,7 +76,7 @@ body{
 .title h3{
   margin: 0 0 8px 0;
   font-weight:500;
-  font-size:18px;
+  font-size:16px;
   letter-spacing:.2px;
 }
 .title-text {
@@ -89,7 +91,7 @@ body{
 
 /* valor grande (Net Worth) */
 .value-xxl{
-  font-size:22px;
+  font-size:18px;
   font-weight:700;
   color:#ffffff;
 }
@@ -111,8 +113,8 @@ body{
 .segment {
   flex: 1 1 0;                 /* todos ocupam igual espaço */
   text-align: center;           /* texto centralizado dentro do botão */
-  font-size: 18px;              /* aumenta fonte de 13px para 20px */
-  padding: 10px 0;              /* altura maior, largura ajusta pelo flex */
+  font-size: 16px;              /* aumenta fonte de 13px para 20px */
+  padding: 6px 0;              /* altura maior, largura ajusta pelo flex */
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -222,7 +224,7 @@ body{
 }
 .donut{
   position: relative;
-  width: min(360px, 100%);
+  width: min(280px, 100%); /* antes 360px */
   aspect-ratio: 1/1;
   margin: 0 auto;
 }
