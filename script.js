@@ -297,3 +297,82 @@ function adjustFontSize(el) {
     el.style.fontSize = "20px";   // acima de 100.000
   }
 }
+
+
+
+/* ---- Cashflow Bars dentro do grid-placeholder existente ---- */
+(function () {
+  const container = document.getElementById('mount-cashflow');
+  if (!container) return;
+
+  const data = [
+    { month: 'Nov 2023', income: 7500, expense: 2500 },
+    { month: 'Jan 2024', income: 8200, expense: 5600 },
+    { month: 'Mar 2024', income: 8800, expense: 7200 },
+    { month: 'May 2024', income: 10000, expense: 7500 },
+    { month: 'Jul 2024', income: 9700, expense: 6800 },
+    { month: 'Sep 2024', income: 9800, expense: 6200 },
+  ];
+
+  const maxVal = Math.max(...data.flatMap(d => [d.income, d.expense]));
+  const fmtBRL = n => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(n);
+
+  const barArea = document.createElement('div');
+  barArea.className = 'cashflow-bars';
+  container.appendChild(barArea);
+
+  const tip = document.createElement('div');
+  tip.className = 'cashflow-tooltip';
+  container.appendChild(tip);
+
+  // cria colunas
+  data.forEach(d => {
+    const group = document.createElement('div');
+    group.className = 'cashflow-group';
+
+    const inc = document.createElement('div');
+    inc.className = 'cashflow-bar income';
+    inc.style.height = (d.income / maxVal * 100) + '%';
+
+    const exp = document.createElement('div');
+    exp.className = 'cashflow-bar expense';
+    exp.style.height = (d.expense / maxVal * 100) + '%';
+
+    [inc, exp].forEach(el => {
+      el.addEventListener('mousemove', ev => {
+        const rect = container.getBoundingClientRect();
+        tip.innerHTML = `
+          <div class="tip-month">${d.month}</div>
+          <div class="tip-row">Receita: <strong>${fmtBRL(d.income)}</strong></div>
+          <div class="tip-row">Despesa: <strong>${fmtBRL(d.expense)}</strong></div>
+        `;
+        tip.style.left = (ev.clientX - rect.left) + 'px';
+        tip.style.top = (ev.clientY - rect.top - 10) + 'px';
+        tip.classList.add('show');
+      });
+      el.addEventListener('mouseleave', () => tip.classList.remove('show'));
+    });
+
+    // wrapper para as barras (verde + vermelha lado a lado)
+const bars = document.createElement('div');
+bars.className = 'cashflow-bars-inner';
+bars.appendChild(inc);
+bars.appendChild(exp);
+
+// adiciona ao grupo
+group.appendChild(bars);
+barArea.appendChild(group);
+  });
+
+  // 👇 AQUI entra o novo eixo (fora da área do gráfico)
+  const axis = document.createElement('div');
+  axis.className = 'cashflow-axis';
+  container.parentNode.insertBefore(axis, container.nextSibling);
+
+  data.forEach(d => {
+    const label = document.createElement('div');
+    label.className = 'cashflow-axis-label';
+    label.textContent = d.month;
+    axis.appendChild(label);
+  });
+})();
