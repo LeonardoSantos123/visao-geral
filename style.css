@@ -254,42 +254,37 @@ body {
 
 /* container do conteúdo da página Caixa */
 .budget-section .cash-page {
-  padding: 24px 20px;
+  padding: 24px 0;
   text-align: center;
 }
 
 /* títulos em azul (Figma) */
 .cash-title {
   color: #8CB7FF;
-  font-weight: 600;
-  font-size: 20px;
-  margin-top: 6px;
+  font-size: 16px;
+  margin-top: 0;
 }
 
 /* valor central grande e responsivo */
 .cash-current {
   color: #ffffff;
-  font-weight: 800;
-  font-size: clamp(36px, 7vw, 72px);
-  margin: 18px 0 18px;
+  font-size: clamp(34px, 7vw, 30px);
+  margin: 10px 0 30px;
   letter-spacing: -1px;
 }
 
 /* subtítulo antes do histórico */
 .cash-subtitle {
   color: #8CB7FF;
-  font-weight: 600;
-  font-size: 18px;
-  margin-top: 18px;
+  font-size: 16px;
+  margin-top: 10px;
 }
 
 /* histórico (três colunas) */
 .cash-history {
   display: flex;
   justify-content: space-around;
-  gap: 24px;
-  margin-top: 18px;
-  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 /* item individual do histórico */
@@ -303,8 +298,7 @@ body {
 /* valor pequeno do histórico */
 .history-value {
   color: #ffffff;
-  font-weight: 800;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 /* nome do mês em azul */
