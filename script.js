@@ -28,6 +28,51 @@ document.querySelectorAll('.segments').forEach(group => {
   });
 });
 
+/* ---- Metas ---- */
+
+const budgetGoalsData = [
+  { name: "Carro Novo", current: 5000.01, goal: 50000 },
+  { name: "Férias", current: 1002.15, goal: 3000 }
+];
+
+(function renderBudgetGoals() {
+  const container = document.getElementById('budget-goals');
+  if (!container) return;
+
+  budgetGoalsData.forEach(goal => {
+    const goalEl = document.createElement('div');
+    goalEl.className = 'goal';
+
+    const nameEl = document.createElement('div');
+    nameEl.className = 'name';
+    nameEl.textContent = goal.name;
+
+    const amountEl = document.createElement('div');
+    amountEl.className = 'amount';
+    // formata valores em BRL
+    const currentFormatted = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(goal.current);
+    const goalFormatted = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(goal.goal);
+    amountEl.innerHTML = `${currentFormatted} / <strong>${goalFormatted}</strong>`;
+
+    const progressEl = document.createElement('div');
+    progressEl.className = 'progress';
+    progressEl.setAttribute('aria-hidden', 'true');
+
+    const iEl = document.createElement('i');
+    const progressPercent = Math.min((goal.current / goal.goal) * 100, 100);
+    iEl.style.width = progressPercent + '%';
+
+    progressEl.appendChild(iEl);
+
+    goalEl.appendChild(nameEl);
+    goalEl.appendChild(amountEl);
+    goalEl.appendChild(progressEl);
+
+    container.appendChild(goalEl);
+  });
+})();
+
+
 /* ---- Donut "By Account" (categorias falsas) ---- */
 (function () {
   const data = [

@@ -591,3 +591,17 @@ body {
   text-align: center;
   min-width: 40px;
 }
+
+
+/* Metas */
+#budget-goals {
+  max-height: calc(4 * 60px); /* assume altura aproximada de cada .goal (ajuste conforme necessário) */
+  overflow-y: auto;           /* permite scroll vertical */
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE 10+ */
+}
+
+#budget-goals::-webkit-scrollbar {
+  width: 0;                   /* Chrome, Safari e Edge */
+  background: transparent;
+}
