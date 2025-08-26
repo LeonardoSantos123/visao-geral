@@ -1,29 +1,30 @@
-/* ---- Toggle visual de tabs (apenas estilo) ---- */
-document.querySelectorAll('.segments').forEach(group => {
-  group.addEventListener('click', (e) => {
-    const btn = e.target.closest('.segment');
-    if (!btn) return;
-    group.querySelectorAll('.segment').forEach(b => b.classList.remove('is-active'));
-    btn.classList.add('is-active');
-  });
-});
-
-/* ---- Toggle visual + troca de conteúdo por aba ---- */
+/* ---- Segments (tabs) — handler único para visual + troca de conteúdo por scope/target ---- */
 document.querySelectorAll('.segments').forEach(group => {
   group.addEventListener('click', (e) => {
     const btn = e.target.closest('.segment');
     if (!btn) return;
 
-    // Toggle visual da aba
+    // Toggle visual (botão ativo)
     group.querySelectorAll('.segment').forEach(b => b.classList.remove('is-active'));
     btn.classList.add('is-active');
 
-    // Mostra/esconde conteúdo da aba (Net Worth)
-    if (group.dataset.scope === 'networth') {
-  document.querySelectorAll('.networth-section').forEach(el => el.classList.remove('is-visible'));
-  const sel = btn.dataset.target;
-  if (sel) document.querySelector(sel).classList.add('is-visible');
-}
+    // Se o grupo tem data-scope e o botão tem data-target, troca o conteúdo correspondente
+    const scope = group.dataset.scope; // ex: "networth" ou "budget"
+    const sel = btn.dataset.target;    // ex: "#budget-goals"
+    if (scope && sel) {
+      // esconde todas as seções desse scope
+      document.querySelectorAll(`.${scope}-section`).forEach(el => {
+        el.classList.remove('is-visible');
+        el.setAttribute('aria-hidden', 'true');
+      });
+
+      // mostra a seção alvo
+      const target = document.querySelector(sel);
+      if (target) {
+        target.classList.add('is-visible');
+        target.removeAttribute('aria-hidden');
+      }
+    }
   });
 });
 

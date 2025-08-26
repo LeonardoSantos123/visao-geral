@@ -235,6 +235,92 @@ body {
 }
 
 /* ====== BUDGET: lista de metas (estrutura, não é gráfico) ====== */
+
+/* budget sections (comportamento igual às networth) */
+.budget-section {
+  display: none;
+}
+
+.budget-section.is-visible {
+  display: block;
+}
+
+/* ===== Budget: Caixa (layout + cores do Figma) ===== */
+.segments[data-scope="budget"] .segment.is-active {
+  background: #8CB7FF;
+  color: #ffffff;
+  box-shadow: inset 0 2px 0 rgba(0,0,0,0.12);
+}
+
+/* container do conteúdo da página Caixa */
+.budget-section .cash-page {
+  padding: 24px 20px;
+  text-align: center;
+}
+
+/* títulos em azul (Figma) */
+.cash-title {
+  color: #8CB7FF;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 6px;
+}
+
+/* valor central grande e responsivo */
+.cash-current {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: clamp(36px, 7vw, 72px);
+  margin: 18px 0 18px;
+  letter-spacing: -1px;
+}
+
+/* subtítulo antes do histórico */
+.cash-subtitle {
+  color: #8CB7FF;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 18px;
+}
+
+/* histórico (três colunas) */
+.cash-history {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+/* item individual do histórico */
+.history-item {
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* valor pequeno do histórico */
+.history-value {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 22px;
+}
+
+/* nome do mês em azul */
+.history-month {
+  color: #8CB7FF;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* responsividade para telas pequenas */
+@media (max-width: 520px) {
+  .cash-current { font-size: 44px; }
+  .cash-history { gap: 12px; }
+  .history-value { font-size: 18px; }
+}
+
 .goal {
   display: grid;
   grid-template-columns: 1fr auto;

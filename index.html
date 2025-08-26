@@ -89,19 +89,26 @@
     </section> 
     
     <!-- ====== CARD 2: BUDGET ====== -->
-    <section class="card">
-      <div class="card__top">
-        <div class="title">
-          <div class="iconbox"><i class="fa-solid fa-coins"></i></div>
-          <div>
-            <h3>Orçamento</h3> <small>Nossos objetivos e orçamento</small>
-          </div>
-        </div>
-        <div class="segments" role="tablist" aria-label="Budget Tabs"> <button class="segment is-active"
-            role="tab">Metas</button> <button class="segment" role="tab">Caixa</button> </div>
-      </div> 
-      
-      <!-- estrutura para metas (barras são apenas decorativas; substitua depois se quiser) -->
+<section class="card">
+  <div class="card__top">
+    <div class="title">
+      <div class="iconbox"><i class="fa-solid fa-coins"></i></div>
+      <div>
+        <h3>Orçamento</h3> <small>Nossos objetivos e orçamento</small>
+      </div>
+    </div>
+
+    <!-- data-scope="budget" e data-target nos botões -->
+    <div class="segments" role="tablist" aria-label="Budget Tabs" data-scope="budget">
+      <button class="segment is-active" role="tab" data-target="#budget-goals">Metas</button>
+      <button class="segment" role="tab" data-target="#budget-cash">Caixa</button>
+    </div>
+  </div>
+
+  <!-- Seções do card -->
+  <div class="budget-sections">
+    <!-- METAS (padrão visível) -->
+    <div class="budget-section is-visible" id="budget-goals" aria-hidden="false">
       <div class="goal">
         <div class="name">New Car</div>
         <div class="amount">$5,000.01 / <strong>$50,000.00</strong></div>
@@ -112,7 +119,37 @@
         <div class="amount">€1,002.15 / <strong>€3,000.00</strong></div>
         <div class="progress" aria-hidden="true"><i style="width:33%"></i></div>
       </div>
-    </section> 
+    </div>
+
+    <!-- CAIXA (conteúdo novo, estilizado) -->
+    <div class="budget-section" id="budget-cash" aria-hidden="true">
+      <div class="cash-page">
+        <div class="cash-title">Caixa Atual da Empresa</div>
+
+        <div class="cash-current" aria-live="polite">R$20.000</div>
+
+        <div class="cash-subtitle">Caixa da Empresa em Meses Anteriores</div>
+
+        <div class="cash-history" role="list">
+          <div class="history-item" role="listitem">
+            <div class="history-value">R$5.000</div>
+            <div class="history-month">Setembro</div>
+          </div>
+
+          <div class="history-item" role="listitem">
+            <div class="history-value">R$10.000</div>
+            <div class="history-month">Outubro</div>
+          </div>
+
+          <div class="history-item" role="listitem">
+            <div class="history-value">R$15.000</div>
+            <div class="history-month">Novembro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     
     <!-- ====== CARD 3: CASH FLOW ====== -->
     <section class="card card--cashflow">
